@@ -1,0 +1,36 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+}
+
+#country-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#bordering-countries {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#bordering-countries img {
+    max-width: 500px;
+    height: auto;
+    border-bottom: solid 2px;
+    padding-bottom: 2rem;
+}
+#bordering-countries p {
+    padding-top: 1rem;
+    font-weight: bold;
+}
+
+#contry-info p {
+    font-weight: bold;
+}
