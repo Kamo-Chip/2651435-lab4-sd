@@ -4,6 +4,8 @@ const borderingCountriesSection = document.querySelector("#bordering-countries")
 const submitBtn = document.querySelector("#submit-btn");
 
 submitBtn.addEventListener("click", async() => {
+    countryInfoSection.innerHTML = "";
+    borderingCountriesSection.innerHTML = "";
     const country = countryNameInput.value;
     const url = "https://restcountries.com/v3.1/name/"
 
@@ -13,12 +15,14 @@ submitBtn.addEventListener("click", async() => {
     const cleanedData = {capital: capital[0], population: population.toLocaleString(), region, flag: flags.png};
     const borderingCountries = [];
 
-    for(let i = 0; i < borders.length; i++) {
-        const borderResult = await fetch(`https://restcountries.com/v3.1/alpha/${borders[i]}`);
-        const borderData = await borderResult.json();
-        const {name, flags} = borderData[0];
-        const cleanedBorderData = {name: name.common, flag: flags.png}
-        borderingCountries.push(cleanedBorderData);
+    if(borders) {
+        for(let i = 0; i < borders.length; i++) {
+            const borderResult = await fetch(`https://restcountries.com/v3.1/alpha/${borders[i]}`);
+            const borderData = await borderResult.json();
+            const {name, flags} = borderData[0];
+            const cleanedBorderData = {name: name.common, flag: flags.png}
+            borderingCountries.push(cleanedBorderData);
+        }    
     }
 
     const fieldsOfInterest = ["Capital", "Population", "Region", "Flag", "Borders"];
